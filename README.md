@@ -2,11 +2,11 @@
 
 ## Azure Tools and Data
 ### Azure内にリソースを作成
-1. [Azure Portal](https://portal.azure.com/)にアクセスし、ログインをしてください。（アカウントのない人は[こちら](https://azure.microsoft.com/en-us/free/)でアカウントを作成してください）
-2. "Create a resource"をクリックしてください。
-3. "AI + Machine Learning"を選択すると、それに属するServiceが一覧で表示されるので "Machine Learning service workspace"をクリックします。
+1. [Azure Portal](https://portal.azure.com/)にアクセスし、ログインをしてください。（アカウントのない人は[こちら](https://azure.microsoft.com/ja-jp/free/)でアカウントを作成してください）
+2. "リソースの作成(Create a resource)"をクリックしてください。
+3. "AI + Machine Learning"を選択すると、それに属するServiceが一覧で表示されるので "Machine Learning サービス ワークスペース(Machine Learning service workspace)"をクリックします。
 4. 名前など必要な項目を埋めていきます。"Resources Group"は、その下部の"Create new"をクリックし、新規に作成することをおすすめします。（コンテンツ終了後、一括削除等が行いやすくなるため）
-5. 入力が完了したら"Review + Create"をクリックします。レビュー画面が表示されるので、"Create"をクリックします。
+5. 入力が完了したら"確認および作成(Review + Create)"をクリックします。レビュー画面が表示されるので、"作成(Create)"をクリックします。
  </br> ![createamlresource][createamlresource]
 6. ワークスペースに必要なリソースの作成には数分かかります。以下は作成されるリソースのリストになります。
 </br> ![workspaceresourcelist][workspaceresourcelist]
@@ -14,15 +14,15 @@
 ### Azure Machine Learning Visual Interfaceを起動
 1. "Machine Learning Service Workspace"を作成したリソースグループに移動します。
 2. リソースグループの"Machine Learning Service Workspace"をクリックします。
-3. 左側のリストから"Visual Interface"をクリックします。
-4. "Launch visual interface"をクリックします。
+3. 左側のリストから"ビジュアルインターフェース(Visual Interface)"をクリックします。
+4. "ビジュアルインターフェースを起動する(Launch visual interface)"をクリックします。
 5. これでビジュアルインターフェイスの操作画面が開きます。
 </br> ![launchamlvi][launchamlvi]
 
 ### データの取得
 1. 今回はKaggleで公開されているデータを利用します。Kaggleはデータサイエンティストのオンラインコミュニティです。
-2. データにフィールド（qualityBool、ワインの良し悪しのラベル、モデルの予測対象）を追加しているので、下記のリンク（GitHubリポジトリ）からデータをダウンロードして下さい。
-* [今回利用するワインのデータセット](https://ainightssep2012460341978.blob.core.windows.net/wine-data/winequality-red-2019ainight.csv)
+2. データにフィールド（qualityBool、ワインの良し悪しのラベル、モデルの予測対象）を追加した加工済みのデータを、下記のリンク（GitHubリポジトリ）からダウンロードして下さい。
+* [今回利用するワインのデータセット](https://github.com/cassieview/IntroToAzureMLInterface/blob/master/dataset/winequality-red.csv)
 * [元データ（Kaggle Dataset）](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) 
 </br> _関連出版物: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009._
 
@@ -32,15 +32,15 @@
 2. 左のバーから"Datasets"を選択します。
 3. "Upload from Local file"を選択します。
 4. 先程ダウンロードしたデータを選択します。
-5. お好みで名前や説明などを変更してください。 (データが増えてくると説明があるとわかりやすいです。)
+5. *Upload New Dataset* の画面で、お好みで名前や説明などを変更してください。 (データが増えてくると説明があるとわかりやすいです。)
 </br>![uploaddataset][uploaddataset]
 
 ### 新しい実験の作成
 1. 左下隅の"New"をクリックします。
-2. "Blank Experiment"をクリックします。
-3. ワークスペース左上の"Experiment created on xx/xx/xxxx"を選択すると、名前を編集できます。わかりやすいようにあとから"ワイン判定"などとつけておくと良いかもしれません。
+2. 左のバーから"Experiments"を選択、"Blank Experiment"をクリックします。
+3. 空の実験 (Experiment) が作成されます。ワークスペース左上の"Experiment created on xx/xx/xxxx"を選択すると、名前を編集できます。わかりやすいようにあとから"ワイン判定"などとつけておくと良いかもしれません。
 4. "Saved Datasets" > "My Datasets"から先程アップロードしたでデータを見つけて下さい。
-5. 見つけたデータをドラックしてワークスペースに置きます。
+5. 見つけたデータをドラックしてワークスペースにドラッグ＆ドロップします。
 </br> ![createexpadddata][createexpadddata]
 
 ## モデルの構築
@@ -50,21 +50,21 @@
 2. 先程配置したデータモジュールと"Edit Metadata"を接続します。接続するにはデータモジュールの下部についている丸をクリックし、ドラックすると紐がでるので、そのまま"Edit Metadata"の上の丸までドラックします。
 3. 配置した"Edit Metadata"をクリックすると、ワークスペース右側にPropertiesが表示されます。そのなかの"Edit Columns"をクリックします。
 4. テキストボックスに `qualityBool` と入力し、OKをクリックします。
-5. "Data type"を"Unchanged"から"Boolean"に変更すれば完了です。
+5. Properties に表示される "Data type"を"Unchanged"から"Boolean"に変更すれば完了です。
 </br>![editmetalabel][editmetalabel]
 
 ### Runをしてみる
 1. ワークスペース中央下部にある"Run"をクリックします。
-2. "Create new"をクリックしてトレーニングに利用するコンピューティングリソースを作成します。
-3. コンピューティングリソースの名前を入力します。
-4. "Run"をクリックします。
+2. *Setup Compute Target to Run Experiment* の画面で、"Create new"をクリックしてトレーニングに利用するコンピューティングリソースを作成します。
+3. New compute name にコンピューティングリソースの名前を入力します。
+4. "Run"をクリックして実行します。(しばらく時間がかかります)
 </br>![runexp][runexp]
 
 ### 利用するカラム（列）の選択
 1. "Data Transformation" > "Manipulation"から"Select Columns in dataset"をドラッグアンドドロップでワークスペースに配置します。
 2. "Edit Metadata"と"Select Columns in dataset"を接続します。"Edit Metadata"の下部についている丸をクリックし、そのまま"Select Columns in dataset"の上の丸までドラックします。
 3. "Select Columns in dataset"をクリックし、ワークスペース右側に表示されたProperties内の"Edit Columns"をクリックします。
-4. `quality`は予測させてたい対象の `qualityBool`と同義で答えとなってしまうためデータから除外します。左側にある"With Rules"をクリックし、 "Begin With"を"All Columns"にし、"Include"となっていた項目を"Exclude"にし、テキストボックスに`quality`と入力し、OKをクリックします
+4. 今回予測させたい対象は `qualityBool`と同義で答えとなってしまう `quality`をデータから除外します。左側にある"With Rules"をクリックし、 "Begin Columns"を"All Columns"にし、"Include"となっていた項目を"Exclude"にし、テキストボックスに`quality`と入力し、OKをクリックします
 
 ### データの視覚化
 データの視覚化はデータサイエンティストをする上で重要なプロセスです。
@@ -73,13 +73,14 @@
 </br>![editdatavisual][editdatavisual]
 
 ### データの分割
-モデルをトレーニングする標準的な方法は、入力したデータを行で分割してモデルの作成（トレーニング）に利用するものと作成したモデルの評価に利用するものに分けます。データ件数にもよりますが、今回は70%をトレーニング用に利用し、残った30%を評価ように利用します。
-なぜトレーニング用と評価用でデータを分けるかといいますと、もしモデル作成で利用したデータを、モデルの評価に利用した場合、そのモデルは入力されたデータの結果を知っていることなり、正答率が不当に上がってしまいます。こういったことを避けるため、トレーニング用と評価用でデータを分けます。
+モデルをトレーニングする標準的な方法は、入力したデータを行で分割してモデルの作成（トレーニング）に利用するものと作成したモデルの評価に利用するものに分けます。データ件数にもよりますが、今回は70%をトレーニング用に利用し、残った30%を評価用に利用します。
+なぜトレーニング用と評価用でデータを分けるかというと、もしモデル作成で利用したデータを、モデルの評価に利用した場合、そのモデルは入力されたデータの結果を知っていることなり、正答率が不当に上がってしまいます。こういったことを避けるため、トレーニング用と評価用でデータを分けます。
 
 1. 左上部のテキストボックスに"Split Data"と入力します。
 2. "Split Data"モジュールが表示されるので、ドラッグアンドドロップでワークスペースに配置します。
-3. "Select Columns in dataset"と"Split Data"を今までと同じように接続します。
-4. "Split Data"を選択し、右側にある"Properties"の"Fraction of rows in the first output dataset"を`0.5` から `0.7`に変更します。
+3. "Select Columns in Dataset"と"Split Data"を今までと同じように接続します。
+4. "Split Data"を選択し、左側の"Fraction of rows in the first output dataset"を`0.5` から `0.7`に変更します。
+
 
 ### モデルのトレーニング、スコアリング、評価
 ここまででデータの準備ができました。ここからはモデルをトレーニングするように構築していきます。
@@ -87,7 +88,7 @@
 1. モデルを構築するとき、どのアルゴリズムでモデルを作成するかを選択する必要があります。一般的には、いろんなアルゴリズムを試して、どれが良いかを決めたり、 [チートシート](https://docs.microsoft.com/en-us/azure/machine-learning/studio/algorithm-cheat-sheet)を利用して決定したりします。 今回のモデルでは`Two-Class Logistic Regression`を利用します。
 2. ワークスペースに以下のモジュールを追加します。これらはテキストボックスから検索してもいいですし、左側の"Machine Learning"の配下にすべて揃っているので、そこから探して持ってきてもいいです。 `Two-Class Logistic Regression`, `Train Model`, `Score Model`, `Evaluate Model`
 </br> _ヒント: モジュールについて質問や疑問がある場合、そのモジュールをクリックし、右下に表示される"more help"をクリックするとそのモジュールに対する詳しい説明を読むことができます。_
-3. 下の画像のようにモジュールを接続します。
+3. 下の画像のようにモジュールを接続します。`Two-Class Logistic Regression`と`Split Data`の２つを`Train Model`の左右に接続し、`Train Model`-`Score Model`-`Evalutate Model` の順に接続します。
 4. `Train Model`をクリックし、右側の"Edit Columns"をクリックします。
 5. テキストボックスに`qualityBool`と入力します。ここで選択した対象がこのモデルで予測する対象となります。
 6. 中央下部の"Run"をクリックします。これで少しするとトレーニング済みモデルが作成されます。
@@ -111,13 +112,13 @@
 トレーニングしたモデルの精度が十分な域に達したら、次はそのモデルWebサービスにデプロイしましょう。
 
 1. 下部にある"Create predictive experiment"をクリックします。
-2. 組んだモジュールが変形します。"Run"をクリックし、計算リソースを確認してもう一度"Run"をクリックします。
-3. これで作成したモデルが左の"Trained Models"に表示され、他の実験でも利用できるようになりました。
+2. 組んだモジュールが変形します。(手順が表示される場合は "OK" をクリックして進みます。) "Run"をクリックし、計算リソースを確認してもう一度"Run"をクリックします。
+3. これで作成したモデルが左のメニューの"Trained Models"に表示され、他の実験でも利用できるようになりました。
 4. 下部の"Deploy Web Service"をクリックします。
-5. 次にこのモデルのデプロイ先であるコンピューティングリソースを作成する必要があります。(まだ作成していない場合)
+5. このモデルのデプロイ先であるコンピューティングリソースを新規に作成します。(まだ作成していない場合。)
 6. "Create new"をクリックして"Go to azure portal link"のリンクをクリックします。すると、新しいタブが開くので、そこでコンピューティングリソースを作成します。Compute nameは任意の名前を入力し、Compute typeはKubemetes Serviceを選択し、リージョンは任意の場所（東日本など）を指定し、他の設定はそのままで"Create"をクリックします。詳しくは下のgifを御覧ください。
-7. コンピューティングリソースを作成したら、ビジュアルインターフェイスに戻り、"Select exiting"をクリックし、隅にある"Refresh"をクリックして、今作成したコンピューティングリソースを表示させます。
-8. 作成したコンピューティングリソースを選択し、"Deploy"をクリックします。これでWebサービスとしてデプロができました。
+7. コンピューティングリソースを作成したら、ビジュアルインターフェイスのタブに戻り、"Select exiting"をクリックし、隅にある"Refresh"をクリックして、今作成したコンピューティングリソースを表示させます。
+8. 作成したコンピューティングリソースを選択し、"Deploy"をクリックします。これでWebサービスとしてデプロイできました。
 </br>![createapigif][createapigif]
 
 ### Webサービスをテストする
