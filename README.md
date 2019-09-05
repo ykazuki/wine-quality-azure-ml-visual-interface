@@ -22,7 +22,7 @@
 ### データの取得
 1. 今回はKaggleで公開されているデータを利用します。Kaggleはデータサイエンティストのオンラインコミュニティです。
 2. データにフィールド（qualityBool、ワインの良し悪しのラベル、モデルの予測対象）を追加しているので、下記のリンク（GitHubリポジトリ）からデータをダウンロードして下さい。
-* [今回利用するワインのデータセット](https://github.com/cassieview/IntroToAzureMLInterface/blob/master/dataset/winequality-red.csv)
+* [今回利用するワインのデータセット](https://github.com/cassieview/IntroToAzureMLInterface/blob/master/dataset/winequality-red.csv)（"Raw" ボタンをクリックすると csv ファイル自体が表示されるので、右クリックし "名前を付けて保存" を選択して保存してください。）
 * [元データ（Kaggle Dataset）](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) 
 </br> _関連出版物: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009._
 
@@ -46,7 +46,7 @@
 ## モデルの構築
 ### データセットにラベル属性を割り当て
 ここまでで、実験が作成されデータがインポートされました。ここからはモデルの構築をしていきましょう。左側にはモデルを構築するための様々なモジュールが準備されています。これらのモジュールをドラッグアンドドロップで配置していきます。
-1. "Transformation" > "Manipulation"から"Edit Metadata"をドラッグアンドドロップでワークスペースに配置します。
+1. "Data Transformation" > "Manipulation"から"Edit Metadata"をドラッグアンドドロップでワークスペースに配置します。
 2. 先程配置したデータモジュールと"Edit Metadata"を接続します。接続するにはデータモジュールの下部についている丸をクリックし、ドラックすると紐がでるので、そのまま"Edit Metadata"の上の丸までドラックします。
 3. 配置した"Edit Metadata"をクリックすると、ワークスペース右側にPropertiesが表示されます。そのなかの"Edit Columns"をクリックします。
 4. テキストボックスに `qualityBool` と入力し、OKをクリックします。
@@ -61,10 +61,10 @@
 </br>![runexp][runexp]
 
 ### 利用するカラム（列）の選択
-1. "Transformation" > "Manipulation"から"Select Columns in dataset"をドラッグアンドドロップでワークスペースに配置します。
+1. "Data Transformation" > "Manipulation"から"Select Columns in dataset"をドラッグアンドドロップでワークスペースに配置します。
 2. "Edit Metadata"と"Select Columns in dataset"を接続します。"Edit Metadata"の下部についている丸をクリックし、そのまま"Select Columns in dataset"の上の丸までドラックします。
 3. "Select Columns in dataset"をクリックし、ワークスペース右側に表示されたProperties内の"Edit Columns"をクリックします。
-4. `quality`は予測させてたい対象の `qualityBool`と同義で答えとなってしまうためデータから除外します。左側にある"With Rules"をクリックし、 "Begin Columns"を"All Columns"にし、"Include"となっていた項目を"Exclude"にし、テキストボックスに`quality`と入力し、OKをクリックします
+4. `quality`は予測させてたい対象の `qualityBool`と同義で答えとなってしまうためデータから除外します。左側にある"With Rules"をクリックし、 "Begin With"を"All Columns"にし、"Include"となっていた項目を"Exclude"にし、テキストボックスに`quality`と入力し、OKをクリックします
 
 ### データの視覚化
 データの視覚化はデータサイエンティストをする上で重要なプロセスです。
@@ -78,8 +78,8 @@
 
 1. 左上部のテキストボックスに"Split Data"と入力します。
 2. "Split Data"モジュールが表示されるので、ドラッグアンドドロップでワークスペースに配置します。
-3. "Edit Meta"と"Split Data"を今までと同じように接続します。
-4. "Split Data"を選択し、左側の"Fraction of rows in the first output dataset"を`0.5` から `0.7`に変更します。
+3. "Select Columns in dataset"と"Split Data"を今までと同じように接続します。
+4. "Split Data"を選択し、右側にある"Properties"の"Fraction of rows in the first output dataset"を`0.5` から `0.7`に変更します。
 
 ### モデルのトレーニング、スコアリング、評価
 ここまででデータの準備ができました。ここからはモデルをトレーニングするように構築していきます。
