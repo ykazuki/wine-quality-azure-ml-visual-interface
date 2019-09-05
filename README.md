@@ -81,6 +81,7 @@
 3. "Select Columns in Dataset"と"Split Data"を今までと同じように接続します。
 4. "Split Data"を選択し、左側の"Fraction of rows in the first output dataset"を`0.5` から `0.7`に変更します。
 
+
 ### モデルのトレーニング、スコアリング、評価
 ここまででデータの準備ができました。ここからはモデルをトレーニングするように構築していきます。
 
