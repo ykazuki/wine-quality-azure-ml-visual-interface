@@ -22,7 +22,7 @@
 ### データの取得
 1. 今回はKaggleで公開されているデータを利用します。Kaggleはデータサイエンティストのオンラインコミュニティです。
 2. データにフィールド（qualityBool、ワインの良し悪しのラベル、モデルの予測対象）を追加しているので、下記のリンク（GitHubリポジトリ）からデータをダウンロードして下さい。
-* [今回利用するワインのデータセット](https://github.com/cassieview/IntroToAzureMLInterface/blob/master/dataset/winequality-red.csv)（"Raw" ボタンをクリックすると csv ファイル自体が表示されるので、右クリックし "名前を付けて保存" を選択して保存してください。）
+* [今回利用するワインのデータセット](https://ainightssep2012460341978.blob.core.windows.net/wine-data/winequality-red-2019ainight.csv)
 * [元データ（Kaggle Dataset）](https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009) 
 </br> _関連出版物: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009._
 
